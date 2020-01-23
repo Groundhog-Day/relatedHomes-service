@@ -1,0 +1,22 @@
+{
+  "name": "related-homes",
+  "version": "1.0.0",
+  "description": "Related Home Information Component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9-airbnb-again/Related-Homes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9-airbnb-again/Related-Homes/issues"
+  },
+  "homepage": "https://github.com/9-airbnb-again/Related-Homes#readme",
+  "dependencies": {
+    "mongoose": "^5.8.9"
+  }
+}
