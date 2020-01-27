@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const faker = require('faker');
 const fs = require('fs');
 const request = require('request');
+const pictures = require('./homePictures.js');
 
-mongoose.connect('mongodb://localhost/airbnb', { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/airbnb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -12,11 +13,9 @@ db.once('open', () => {
   console.log('Connected to airbnb database!');
 });
 
-const ImageSchema = new mongoose.Schema({ id: Number, imageLink: String });
-
 const RelatedSchema = new mongoose.Schema({
   id: Number,
-  images: [ImageSchema],
+  images: [],
   homeCategory: String,
   bedCount: Number,
   listingTitle: String,
@@ -38,15 +37,33 @@ const getRandomCategory = () => {
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; // maximum is exclusive & minimum is inclusive
+  return Math.floor(Math.random() * (max - min)) + min; // maximum is exclusive/minimum is inclusive
 };
 
+// Helper function to get random set of pictures for database
+const getRandomPictures = () => {
+  const pics = pictures.pictures;
+  const result = [];
+
+  let numOfPics = getRandomInt(1, 11);
+
+  for (var i = 0; i < numOfPics; i++) {
+    let randomPic = getRandomInt(0, 104);
+    if (!result.includes(pics[randomPic])) {
+      result.push(pics[randomPic]);
+    } else {
+      i--;
+    }
+  }
+  return result;
+}
+
 // Function to seed data into database
-const generateData = () => {
+const seedData = () => {
   for (let i = 0; i < 100; i++) {
     const newHome = new Home({
       _id: mongoose.Types.ObjectId(),
-      images: [],
+      images: getRandomPictures(),
       homeCategory: getRandomCategory(),
       bedCount: getRandomInt(1, 11),
       listingTitle: faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!'),
@@ -86,4 +103,3 @@ const downloadImages = () => {
     );
   }
 };
-
