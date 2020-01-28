@@ -105,7 +105,8 @@ const downloadImages = () => {
 };
 
 const getRandomHome = (callback) => {
-  Home.findOne((err, home) => {
+  let random = getRandomInt(1, 101);
+  Home.findOne().skip(random).exec((err, home) => {
     if (err) {
       callback(err);
     }
@@ -115,4 +116,4 @@ const getRandomHome = (callback) => {
 
 module.exports = {
   getRandomHome,
-}
+};
