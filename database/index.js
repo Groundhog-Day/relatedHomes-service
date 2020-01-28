@@ -103,3 +103,16 @@ const downloadImages = () => {
     );
   }
 };
+
+const getRandomHome = (callback) => {
+  Home.findOne((err, home) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, home);
+  });
+}
+
+module.exports = {
+  getRandomHome,
+}
