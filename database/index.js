@@ -14,7 +14,7 @@ db.once('open', () => {
 });
 
 const RelatedSchema = new mongoose.Schema({
-  id: Number,
+  listingId: Number,
   images: [],
   homeCategory: String,
   bedCount: Number,
@@ -62,7 +62,7 @@ const getRandomPictures = () => {
 const seedData = () => {
   for (let i = 0; i < 100; i++) {
     const newHome = new Home({
-      _id: mongoose.Types.ObjectId(),
+      listingId: i,
       images: getRandomPictures(),
       homeCategory: getRandomCategory(),
       bedCount: getRandomInt(1, 11),
@@ -104,16 +104,15 @@ const downloadImages = () => {
   }
 };
 
-const getRandomHome = (callback) => {
-  let random = getRandomInt(1, 101);
-  Home.findOne().skip(random).exec((err, home) => {
+const getHome = (callback, home) => {
+  Home.findOne({listingId : home}, (err, doc) => {
     if (err) {
       callback(err);
     }
-    callback(null, home);
+    callback(null, doc);
   });
 }
 
 module.exports = {
-  getRandomHome,
+   getHome,
 };
