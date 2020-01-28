@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Related Homes</h1>
+        <h2>More homes you may like</h2>
       </div>
     )
   };
