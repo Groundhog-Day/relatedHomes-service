@@ -1,9 +1,13 @@
 import React from 'react';
+import data from '../../../dummyData.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      homes: data.homes
+    }
 
   }
 
