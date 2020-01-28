@@ -6,13 +6,14 @@ const db = require('../database/index.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/api/related-homes', (req, res) => {
-  db.getRandomHome((err, home) => {
+app.get('/api/related-homes/:homeId', (req, res) => {
+  let home = req.params.homeId;
+  db.getHome((err, home) => {
     if (err) {
       res.send(err);
     }
     res.send(home);
-  })
+  }, home)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
