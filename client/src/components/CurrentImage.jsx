@@ -5,7 +5,7 @@ const CurrentImage = ({ url }) => {
 
   const Image = styled.div({
     height: '200px',
-    width: '310px',
+    width: '330px',
     backgroundImage: `url(${url})`,
     backgroundSize: 'cover',
     position: 'relative'

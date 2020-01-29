@@ -5,13 +5,8 @@ import Arrow from './Arrow.jsx';
 import styled from 'styled-components';
 
 const Pictures = styled.div({
-  display: 'flex'
+  display: 'flex',
 })
-
-const Par = styled.p`
-  padding-top: 22%;
-  position: 'absolute';
-`;
 
 class PictureCarousel extends React.Component {
   constructor(props) {
@@ -43,6 +38,7 @@ class PictureCarousel extends React.Component {
     }
   }
 
+
   render () {
     const imgArr = this.props.images;
     const current = this.state.currentIndex;
@@ -51,9 +47,9 @@ class PictureCarousel extends React.Component {
     return (
       <div>
         <Pictures>
-          <Par> <Arrow clickFunc={this.previouseImage} direction='left'/> </Par>
+          <Arrow clickFunc={this.previouseImage} direction='left'/>
           <CurrentImage url={imgArr[current]}/>
-          <Par> <Arrow clickFunc={this.nextImage} direction='right'/> </Par>
+          <Arrow clickFunc={this.nextImage} direction='right'/>
         </Pictures>
         <TitleInfo home={homeInfo}/>
       </div>
