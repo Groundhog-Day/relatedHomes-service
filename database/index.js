@@ -113,6 +113,17 @@ const getHome = (callback, home) => {
   });
 }
 
+const getThreeHomes = (callback) => {
+  let random = getRandomInt(0,101);
+  Home.find({}, null, {limit: 3, skip: random}, (err, list) => {
+    if(err) {
+      callback(err);
+    }
+    callback(null, list);
+  })
+}
+
 module.exports = {
    getHome,
+   getThreeHomes
 };

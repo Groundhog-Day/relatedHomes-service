@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  color: grey;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
 `;
 
 const Arrow = (props) => {

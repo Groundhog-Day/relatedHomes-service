@@ -10,6 +10,7 @@ const Pictures = styled.div({
 
 const Par = styled.p`
   padding-top: 22%;
+  position: 'absolute';
 `;
 
 class PictureCarousel extends React.Component {

@@ -7,7 +7,8 @@ const CurrentImage = ({ url }) => {
     height: '200px',
     width: '310px',
     backgroundImage: `url(${url})`,
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    position: 'relative'
   });
 
   return (
