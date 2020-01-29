@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import HomeCarousel from './HomeCarousel.jsx';
 
 const Title = styled.h2`
-  font-size: 2em;
+  font-size: 1.60em;
   color: ${props => props.theme.dimGrey};
 `;
 
@@ -28,7 +28,7 @@ class App extends React.Component {
           </Title>
         </div>
         <div className="homeCarousel">
-          <HomeCarousel />
+          <HomeCarousel homes={this.state.homes}/>
         </div>
       </div>
     )
