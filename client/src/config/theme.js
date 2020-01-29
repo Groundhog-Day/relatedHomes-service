@@ -1,0 +1,1 @@
+export const dimGrey = '#6B6B6B'
