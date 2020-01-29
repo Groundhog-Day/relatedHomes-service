@@ -5,7 +5,8 @@ import styled from 'styled-components';
 
 const HomeCard = styled.div({
   height: '600px',
-  width: '325px'
+  width: '325px',
+  padding: '5px'
 })
 
 const HomesDisplay = styled.div({

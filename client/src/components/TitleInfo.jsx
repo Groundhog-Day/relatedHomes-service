@@ -7,6 +7,8 @@ class TitleInfo extends React.Component {
       <div>
         <p>{current.homeCategory}</p>
         <p>{current.bedCount} beds</p>
+        <p>{current.starCount}</p>
+        <p>({current.reviewCount})</p>
         <p>{current.listingTitle}</p>
       </div>
     )
