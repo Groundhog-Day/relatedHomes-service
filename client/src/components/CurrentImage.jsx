@@ -3,14 +3,6 @@ import styled, { keyframes } from 'styled-components';
 import Arrow from './Arrow.jsx';
 import BubbleIndicator from './BubbleIndicator.jsx';
 
-const ArrowDiv = styled.div({
-  display: 'flex',
-  height: 'inherit',
-  width: 'inherit',
-  justifyContent: 'space-between',
-  position: 'static'
-});
-
 const enlarge = keyframes`
   0% {
     height: 30px;
@@ -32,18 +24,29 @@ const HeartButton = styled.button`
   color: black;
   border-radius: 50%;
   opacity: 80%;
+  margin-top: 6px;
+  margin-right: 6px;
   :hover{ animation: 0.5s ${enlarge} 1 normal forwards};
 `;
 
-const HeartDiv = styled.div({
+const ArrowDiv = styled.div({
   display: 'flex',
-  flexDirection: 'row-reverse',
-  justifyContent: 'right'
+  height: 'inherit',
+  width: 'inherit',
+  justifyContent: 'space-between',
+  position: 'static'
 });
 
 const BubbleDiv = styled.div({
   display:'flex',
   justifyContent: 'center'
+});
+
+const HeartDiv = styled.div({
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  justifyContent: 'right',
+  textAlign: 'center'
 });
 
 class CurrentImage extends React.Component {
@@ -85,28 +88,28 @@ class CurrentImage extends React.Component {
       arrowDiv = (<ArrowDiv>
                       <Arrow clickFunc={this.props.leftClick} direction="left"> </Arrow>
                       <Arrow clickFunc={this.props.rightClick} direction="right"> </Arrow>
-                    </ArrowDiv>);
+                  </ArrowDiv>);
 
       heartDiv = (<HeartDiv>
                     <HeartButton>
-                      <i class="glyphicon glyphicon-heart-empty"></i>
+                      <i className="glyphicon glyphicon-heart-empty"></i>
                     </HeartButton>
                   </HeartDiv>);
     } else {
-      arrowDiv = <ArrowDiv />
-      heartDiv = <HeartDiv />
-    }
+      arrowDiv = <ArrowDiv />;
+      heartDiv = <HeartDiv />;
+    };
 
     return (
       <Image onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         {heartDiv}
         {arrowDiv}
         <BubbleDiv>
-          <BubbleIndicator />
+          <BubbleIndicator currentIndex={this.props.currentIndex}/>
         </BubbleDiv>
       </Image>
     )
-  }
+  };
 };
 
 export default CurrentImage;

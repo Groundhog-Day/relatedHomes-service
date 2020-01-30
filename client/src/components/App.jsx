@@ -5,14 +5,16 @@ import HomeCarousel from './HomeCarousel.jsx';
 import axios from 'axios';
 
 const Title = styled.h2`
-  font-size: 1.60em;
+  font-size: 25px;
   color: ${props => props.theme.dimGrey};
+  margin-left: 10px;
 `;
 
 const AppContainer = styled.div({
   maxWidth: '1100px',
   maxHeight: '450px',
   postion: 'fixed',
+  marginLeft: '15px'
 })
 
 class App extends React.Component {
@@ -22,7 +24,6 @@ class App extends React.Component {
     this.state = {
       homes: data.homes
     }
-
   }
 
   componentDidMount() {

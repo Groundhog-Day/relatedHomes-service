@@ -31,8 +31,7 @@ class HomeCarousel extends React.Component {
               <HomeCard key={home.listingId}>
                 <PictureCarousel images={home.images} home={home}/>
                 <TitleInfo home={home}/>
-              </HomeCard>
-            )
+              </HomeCard> )
           })}
         </HomesDisplay>
     )

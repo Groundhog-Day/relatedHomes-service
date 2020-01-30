@@ -39,14 +39,18 @@ class PictureCarousel extends React.Component {
     }
   }
 
-
   render () {
     const imgArr = this.props.images;
     const current = this.state.currentIndex;
 
     return (
         <Pictures>
-          <CurrentImage url={imgArr[current]} leftClick={this.previouseImage} rightClick={this.nextImage} />
+          <CurrentImage
+            url= {imgArr[current]}
+            leftClick= {this.previouseImage}
+            rightClick= {this.nextImage}
+            currentIndex= {this.state.currentIndex}
+          />
         </Pictures>
     )
   }

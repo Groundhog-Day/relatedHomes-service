@@ -5,7 +5,7 @@ class BubbleIndicator extends React.Component {
 
   render() {
     return (
-      <p>test</p>
+      <p>{this.props.currentIndex}</p>
     )
   }
 }
