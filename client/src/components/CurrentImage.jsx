@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Arrow from './Arrow.jsx';
 import BubbleIndicator from './BubbleIndicator.jsx';
 
@@ -10,6 +10,30 @@ const ArrowDiv = styled.div({
   justifyContent: 'space-between',
   position: 'static'
 });
+
+const enlarge = keyframes`
+  0% {
+    height: 30px;
+    width: 30px;
+    opacity: 80%;
+  }
+  100% {
+    height: 32px;
+    width: 32px;
+    opacity: 100%;
+  }
+`
+
+const HeartButton = styled.button`
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  opacity: 80%;
+  :hover{ animation: 0.5s ${enlarge} 1 normal forwards};
+`;
 
 const HeartDiv = styled.div({
   display: 'flex',
@@ -54,22 +78,32 @@ class CurrentImage extends React.Component {
       flexDirection: 'column'
     });
 
-    let placeHolder;
+    let arrowDiv;
+    let heartDiv;
 
     if (this.state.hovering) {
-      placeHolder = <ArrowDiv>
+      arrowDiv = (<ArrowDiv>
                       <Arrow clickFunc={this.props.leftClick} direction="left"> </Arrow>
                       <Arrow clickFunc={this.props.rightClick} direction="right"> </Arrow>
-                    </ArrowDiv>
+                    </ArrowDiv>);
+
+      heartDiv = (<HeartDiv>
+                    <HeartButton>
+                      <i class="glyphicon glyphicon-heart-empty"></i>
+                    </HeartButton>
+                  </HeartDiv>);
     } else {
-      placeHolder = <ArrowDiv />
+      arrowDiv = <ArrowDiv />
+      heartDiv = <HeartDiv />
     }
 
     return (
       <Image onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-        <HeartDiv>Heart</HeartDiv>
-          {placeHolder}
-        <BubbleDiv><BubbleIndicator /></BubbleDiv>
+        {heartDiv}
+        {arrowDiv}
+        <BubbleDiv>
+          <BubbleIndicator />
+        </BubbleDiv>
       </Image>
     )
   }
