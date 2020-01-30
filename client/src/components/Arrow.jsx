@@ -1,22 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
-const Button = styled.button`
-  height: 25px;
-  width: 25px;
+const fadeIn = keyframes`
+  0% {
+    opacity: 75%;
+  }
+  100% {
+    opacity: 100%;
+  }
+`
+
+const LeftButton = styled.button`
+  height: 30px;
+  width: 30px;
   background-color: white;
   border-radius: 50%;
   display: inline-block;
-  postion: 'absolute';
+  animation: 0.2s ${fadeIn} ease-out;
+  position: relative;
+  top: 45%;
+  left: 3%;
+  opacity: 80%;
 `;
 
-const InvisButton = styled.div`
-  height: 45%;
-  width: 25px;
-  background-color: white;
-  border-color: white;
-  border-radius: 50%;
-  display: inline-block;
+const RightButton = styled(LeftButton)`
+  left: 80%;
 `;
 
 class Arrow extends React.Component {
@@ -45,21 +53,11 @@ class Arrow extends React.Component {
   render() {
     if (this.props.direction === 'left') {
       return (
-        <div onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <InvisButton />
-          {this.state.hovering &&
-            <div><Button onClick={this.props.clickFunc}>&lt;</Button></div>
-          }
-        </div>
+        <LeftButton onClick={this.props.clickFunc} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>&lt;</LeftButton>
       )
     } else {
      return (
-       <div onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-         <InvisButton />
-         {this.state.hovering &&
-            <div><Button onClick={this.props.clickFunc}>&gt;</Button></div>
-         }
-       </div>
+        <RightButton onClick={this.props.clickFunc} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>&gt;</RightButton>
      )
     }
   }

@@ -1,19 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import Arrow from './Arrow.jsx';
 
-const CurrentImage = ({ url }) => {
+class CurrentImage extends React.Component {
+  constructor(props) {
+    super(props)
 
-  const Image = styled.div({
-    height: '200px',
-    width: '330px',
-    backgroundImage: `url(${url})`,
-    backgroundSize: 'cover',
-    position: 'relative'
-  });
+  }
 
-  return (
-    <Image />
-  )
+  render() {
+
+    const Image = styled.div({
+      height: '200px',
+      width: '350px',
+      backgroundImage: `url(${this.props.url})`,
+      backgroundSize: 'cover',
+      display: 'flex',
+    });
+
+    return (
+      <Image>
+        <Arrow clickFunc={this.props.leftClick} direction="left" />
+        <Arrow clickFunc={this.props.rightClick} direction="right" />
+      </Image>
+    )
+  }
 };
 
 export default CurrentImage;

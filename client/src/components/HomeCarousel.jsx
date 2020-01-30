@@ -3,16 +3,19 @@ import PictureCarousel from './PictureCarousel.jsx';
 import TitleInfo from './TitleInfo.jsx';
 import styled from 'styled-components';
 
-const HomeCard = styled.div({
-  height: '600px',
-  width: '325px',
-  padding: '5px'
+const HomesDisplay = styled.div({
+  maxHeight: '100%',
+  maxwidth: '100%',
+  display: 'flex',
+  flexDirection: 'row'
 })
 
-const HomesDisplay = styled.div({
-  height: '500px',
-  width: '1300px',
+const HomeCard = styled.div({
+  maxHeight: '33%',
+  maxWidth: '33%',
+  margin: '10px',
   display: 'flex',
+  flexDirection: 'column'
 })
 
 class HomeCarousel extends React.Component {
@@ -22,11 +25,16 @@ class HomeCarousel extends React.Component {
 
   render() {
     return(
-      <HomesDisplay>
-        {this.props.homes.map(home => {
-         return (<HomeCard key={home.listingId}><PictureCarousel images={home.images} home={home}/></HomeCard>)
-        })}
-      </HomesDisplay>
+        <HomesDisplay>
+          {this.props.homes.map(home => {
+            return (
+              <HomeCard key={home.listingId}>
+                <PictureCarousel images={home.images} home={home}/>
+                <TitleInfo home={home}/>
+              </HomeCard>
+            )
+          })}
+        </HomesDisplay>
     )
   }
 }

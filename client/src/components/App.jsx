@@ -9,6 +9,11 @@ const Title = styled.h2`
   color: ${props => props.theme.dimGrey};
 `;
 
+const AppContainer = styled.div({
+  maxWidth: '1100px',
+  maxHeight: '450px',
+})
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -22,7 +27,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/getHomes')
       .then((response) => {
-        console.log('AXIOS GET', response.data)
         this.setState({homes: response.data})
       })
       .catch((error) => {
@@ -32,7 +36,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <AppContainer >
         <div className="header">
           <Title>
             More homes you may like
@@ -41,7 +45,7 @@ class App extends React.Component {
         <div className="homeCarousel">
           <HomeCarousel homes={this.state.homes}/>
         </div>
-      </div>
+      </AppContainer >
     )
   };
 }

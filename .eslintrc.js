@@ -23,5 +23,6 @@ module.exports = {
   ],
   rules: {
     "allowForLoopAfterthoughts": true,
+    "semi": ["error", "always"]
   },
 };

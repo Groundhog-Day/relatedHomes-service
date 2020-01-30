@@ -1,11 +1,13 @@
 import React from 'react';
 import CurrentImage from './CurrentImage.jsx';
-import TitleInfo from './TitleInfo.jsx';
 import Arrow from './Arrow.jsx';
 import styled from 'styled-components';
 
 const Pictures = styled.div({
   display: 'flex',
+  height: '100%',
+  width: '100%',
+  postion: 'absolute'
 })
 
 class PictureCarousel extends React.Component {
@@ -42,17 +44,11 @@ class PictureCarousel extends React.Component {
   render () {
     const imgArr = this.props.images;
     const current = this.state.currentIndex;
-    const homeInfo = this.props.home;
 
     return (
-      <div>
         <Pictures>
-          <Arrow clickFunc={this.previouseImage} direction='left'/>
-          <CurrentImage url={imgArr[current]}/>
-          <Arrow clickFunc={this.nextImage} direction='right'/>
+          <CurrentImage url={imgArr[current]} leftClick={this.previouseImage} rightClick={this.nextImage} />
         </Pictures>
-        <TitleInfo home={homeInfo}/>
-      </div>
     )
   }
 }
