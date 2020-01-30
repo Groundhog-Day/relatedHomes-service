@@ -12,6 +12,7 @@ const Title = styled.h2`
 const AppContainer = styled.div({
   maxWidth: '1100px',
   maxHeight: '450px',
+  postion: 'fixed',
 })
 
 class App extends React.Component {

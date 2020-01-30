@@ -1,12 +1,11 @@
 import React from 'react';
 import CurrentImage from './CurrentImage.jsx';
-import Arrow from './Arrow.jsx';
 import styled from 'styled-components';
 
 const Pictures = styled.div({
   display: 'flex',
-  height: '100%',
-  width: '100%',
+  height: 'inherit',
+  width: 'inherit',
   postion: 'absolute'
 })
 
