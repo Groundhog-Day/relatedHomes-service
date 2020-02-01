@@ -101,7 +101,6 @@ const pictures = [
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/100.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/101.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/102.jpg',
-'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/103.jpg',
 ];
 
 module.exports = {

@@ -3,111 +3,47 @@ import styled, { keyframes } from 'styled-components';
 import Arrow from './Arrow.jsx';
 import BubbleIndicator from './BubbleIndicator.jsx';
 
-const enlarge = keyframes`
-  0% {
-    height: 30px;
-    width: 30px;
-    opacity: 80%;
-  }
-  100% {
-    height: 32px;
-    width: 32px;
-    opacity: 100%;
-  }
-`
 
-const HeartButton = styled.button`
-  height: 30px;
-  width: 30px;
-  font-size: 15px;
-  background-color: white;
-  color: black;
-  border-radius: 50%;
-  opacity: 80%;
-  margin-top: 6px;
-  margin-right: 6px;
-  :hover{ animation: 0.5s ${enlarge} 1 normal forwards};
-`;
-
-const ArrowDiv = styled.div({
-  display: 'flex',
-  height: 'inherit',
-  width: 'inherit',
-  justifyContent: 'space-between',
-  position: 'static'
-});
 
 const BubbleDiv = styled.div({
   display:'flex',
   justifyContent: 'center'
 });
 
-const HeartDiv = styled.div({
-  display: 'flex',
-  flexDirection: 'row-reverse',
-  justifyContent: 'right',
-  textAlign: 'center'
-});
 
 class CurrentImage extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      hovering: false
-    }
-
-    this.handleHover = this.handleHover.bind(this);
-    this.toggleHover = this.toggleHover.bind(this);
-  }
-
-  handleHover() {
-    this.setState(this.toggleHover)
-  }
-
-  toggleHover(state) {
-    return {
-      hovering: !state.hovering
     }
   }
 
   render() {
-    const Image = styled.div({
-      height: '200px',
-      width: '350px',
-      backgroundImage: `url(${this.props.url})`,
-      backgroundSize: 'cover',
-      display: 'flex',
-      flexDirection: 'column'
+
+    const ImageContainer = styled.div({
+      transform: `translateX(-${this.props.translate}px)`,
+      transition: 'transform ease-out 1s',
+      height: '100%',
+      width: '100%',
+      display: 'flex'
     });
 
-    let arrowDiv;
-    let heartDiv;
-
-    if (this.state.hovering) {
-      arrowDiv = (<ArrowDiv>
-                      <Arrow clickFunc={this.props.leftClick} direction="left"> </Arrow>
-                      <Arrow clickFunc={this.props.rightClick} direction="right"> </Arrow>
-                  </ArrowDiv>);
-
-      heartDiv = (<HeartDiv>
-                    <HeartButton>
-                      <i className="glyphicon glyphicon-heart-empty"></i>
-                    </HeartButton>
-                  </HeartDiv>);
-    } else {
-      arrowDiv = <ArrowDiv />;
-      heartDiv = <HeartDiv />;
-    };
+    const Image = styled.img`
+      height: 100%;
+      width: 100%;
+    `;
 
     return (
-      <Image onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-        {heartDiv}
-        {arrowDiv}
-        <BubbleDiv>
-          <BubbleIndicator currentIndex={this.props.currentIndex}/>
-        </BubbleDiv>
-      </Image>
+      <ImageContainer>
+        {this.props.images.map(image => {
+            return (
+            <Image
+              key = {image}
+              src = {image}
+            /> )
+          })}
+      </ImageContainer>
     )
   };
 };
