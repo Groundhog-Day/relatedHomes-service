@@ -121,6 +121,14 @@ class PictureCarousel extends React.Component {
       flexDirection: 'row-reverse',
     });
 
+    const ImageContainer = styled.div({
+      transform: `translateX(-${this.state.translate}px)`,
+      transition: 'transform ease-out 1s',
+      height: '100%',
+      width: '100%',
+      display: 'flex'
+    });
+
     let arrowDiv;
     let heartDiv;
 
@@ -139,11 +147,15 @@ class PictureCarousel extends React.Component {
 
     return (
         <Pictures onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <CurrentImage
-            images= {this.props.images}
-            currentIndex= {this.state.currentIndex}
-            translate= {this.state.translate}
-          ></CurrentImage>
+        <ImageContainer>
+          {this.state.images.map(image => {
+              return (
+              <Image
+                key = {image}
+                src = {image}
+              /> )
+            })}
+        </ImageContainer>
           {arrowDiv}
         </Pictures>
     )
@@ -151,7 +163,11 @@ class PictureCarousel extends React.Component {
 }
 
 export default PictureCarousel;
-
+          {/* <CurrentImage
+            images= {this.props.images}
+            currentIndex= {this.state.currentIndex}
+            translate= {this.state.translate}
+          ></CurrentImage> */}
          {/* <CurrentImage
             images= {this.props.images}
             leftClick= {this.previouseImage}
