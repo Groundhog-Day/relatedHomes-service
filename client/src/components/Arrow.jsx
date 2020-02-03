@@ -12,8 +12,8 @@ const Arrow = (props) => {
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: '50%',
-    transition: 'transform ease-out 0.1s',
-    transform: `translateX(-${props.translate}px)`,
+    cursor: 'pointer',
+    right: props.direction === 'left' ? '44%' : '2%'
   })
 
 

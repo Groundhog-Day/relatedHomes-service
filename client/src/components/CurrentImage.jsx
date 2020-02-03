@@ -26,7 +26,7 @@ class CurrentImage extends React.Component {
       transition: 'transform ease-out 1s',
       height: '100%',
       width: '100%',
-      display: 'flex'
+      display: 'flex',
     });
 
     const Image = styled.img`

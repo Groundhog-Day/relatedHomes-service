@@ -19,7 +19,7 @@ const enlarge = keyframes`
 const HeartButton = styled.button`
   height: 30px;
   width: 30px;
-  bottom: 50%;
+  bottom: 50px;
   font-size: 15px;
   background-color: white;
   color: black;
@@ -110,30 +110,36 @@ class PictureCarousel extends React.Component {
       height: '100%',
       width: '100%',
       justifyContent: 'space-between',
-      transform: `translateX(-${this.props.translate}px)`,
-      transition: 'transform ease-out 1s'
     });
 
     const HeartDiv = styled.div({
-      height: '100%',
-      width: '100%',
       display: 'flex',
-      flexDirection: 'row-reverse',
+      height: '30px',
+      width: '30px',
+      bottom: '95%',
+      left: '89%',
+      position: 'relative',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+      borderRadius: '50%',
+      cursor: 'pointer',
+      fontSize: '20px'
     });
 
     const ImageContainer = styled.div({
       transform: `translateX(-${this.state.translate}px)`,
-      transition: 'transform ease-out 1s',
+      transition: 'transform 3s',
       height: '100%',
       width: '100%',
-      display: 'flex'
-    });
+      display: 'flex',
+    })
 
     let arrowDiv;
     let heartDiv;
 
     if (this.state.hovering) {
       arrowDiv = (<ArrowDiv>
+                    <HeartDiv><i className="glyphicon glyphicon-heart-empty"></i></HeartDiv>
                     <Arrow clickFunc={this.previousImage} direction="left"> </Arrow>
                     <Arrow clickFunc={this.nextImage} direction="right"> </Arrow>
                   </ArrowDiv>);
@@ -147,15 +153,15 @@ class PictureCarousel extends React.Component {
 
     return (
         <Pictures onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-        <ImageContainer>
-          {this.state.images.map(image => {
-              return (
-              <Image
-                key = {image}
-                src = {image}
-              /> )
-            })}
-        </ImageContainer>
+          <ImageContainer>
+            {this.state.images.map(image => {
+                return (
+                <Image
+                  key = {image}
+                  src = {image}
+                /> )
+              })}
+          </ImageContainer>
           {arrowDiv}
         </Pictures>
     )

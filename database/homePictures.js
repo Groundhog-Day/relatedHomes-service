@@ -10,7 +10,6 @@ const pictures = [
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/9.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/10.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/11.jpg',
-'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/12.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/13.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/14.jpg',
 'https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/15.jpg',
