@@ -3,6 +3,7 @@ import data from '../../../dummyData.js';
 import styled from 'styled-components';
 import HomeCarousel from './HomeCarousel.jsx';
 import axios from 'axios';
+import Arrow from './Arrow.jsx';
 
 const Title = styled.h2`
   font-size: 25px;
@@ -16,6 +17,13 @@ const AppContainer = styled.div({
   postion: 'fixed',
   marginLeft: '15px'
 })
+
+const ArrowDiv = styled.div({
+  display: 'flex',
+  height: '100%',
+  width: '100%',
+  justifyContent: 'space-between',
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +53,7 @@ class App extends React.Component {
           </Title>
         </div>
         <div className="homeCarousel">
-          <HomeCarousel homes={this.state.homes}/>
+          <HomeCarousel homes={this.state.homes} />
         </div>
       </AppContainer >
     )

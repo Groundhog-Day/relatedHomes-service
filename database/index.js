@@ -123,7 +123,7 @@ const getHome = (callback, home) => {
 
 const getThreeHomes = (callback) => {
   let random = getRandomInt(0,101);
-  Home.find({}, null, {limit: 3, skip: random}, (err, list) => {
+  Home.find({}, null, {limit: 6, skip: random}, (err, list) => {
     if(err) {
       callback(err);
     }

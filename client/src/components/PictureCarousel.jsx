@@ -169,33 +169,3 @@ class PictureCarousel extends React.Component {
 }
 
 export default PictureCarousel;
-          {/* <CurrentImage
-            images= {this.props.images}
-            currentIndex= {this.state.currentIndex}
-            translate= {this.state.translate}
-          ></CurrentImage> */}
-         {/* <CurrentImage
-            images= {this.props.images}
-            leftClick= {this.previouseImage}
-            rightClick= {this.nextImage}
-            currentIndex= {this.state.currentIndex}
-            translate= {this.state.translate}
-            >
-          </CurrentImage> */}
-
-{/* <ImageContainer>
-{this.state.images.map(image => {
-  return (
-    <Image
-    key = {image}
-    src = {image}
-    />
-    )
-  })}
-</ImageContainer>
-<Arrow clickFunc={this.previouseImage} direction='left'></Arrow>
-<Arrow clickFunc={this.nextImage} direction='right'></Arrow> */}
-
-{/* <CurrentImage images={this.props.images} translate={this.state.translate} totalWidth={this.state.totalWidth}>
-</CurrentImage> */}
-
