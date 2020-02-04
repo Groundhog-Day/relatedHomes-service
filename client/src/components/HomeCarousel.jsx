@@ -46,7 +46,7 @@ height: 100%;
 width: 100%;
 display: flex;
 transform: translateX(-${props => props.translate}px);
-transition: 1s;
+transition: ease-out 0.75s;
 `
 
 class HomeCarousel extends React.Component {

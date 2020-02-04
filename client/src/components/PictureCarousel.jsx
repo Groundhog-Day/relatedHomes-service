@@ -19,7 +19,6 @@ const enlarge = keyframes`
 const HeartButton = styled.button`
   height: 30px;
   width: 30px;
-  bottom: 50px;
   font-size: 15px;
   background-color: white;
   color: black;
@@ -65,7 +64,7 @@ const HeartDiv = styled.div({
 
 const ImageContainer = styled.div`
   transform: translateX(-${props => props.translate}px);
-  transition: 1s;
+  transition: ease-out 0.75s;
   height: 100%;
   width: 100%;
   display: flex;
