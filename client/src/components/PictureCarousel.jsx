@@ -1,5 +1,4 @@
 import React from 'react';
-import CurrentImage from './CurrentImage.jsx';
 import styled, { keyframes } from 'styled-components';
 import Arrow from './Arrow.jsx';
 
@@ -54,6 +53,7 @@ const HeartDiv = styled.div({
   width: '30px',
   bottom: '95%',
   left: '89%',
+  paddingTop: '4px',
   position: 'relative',
   justifyContent: 'center',
   backgroundColor: 'white',
@@ -132,9 +132,7 @@ class PictureCarousel extends React.Component {
   }
 
   render () {
-
     let arrowDiv;
-    let heartDiv;
 
     if (this.state.hovering) {
       arrowDiv = (<ArrowDiv>
@@ -142,12 +140,8 @@ class PictureCarousel extends React.Component {
                     <Arrow clickFunc={this.previousImage} direction="left"> </Arrow>
                     <Arrow clickFunc={this.nextImage} direction="right"> </Arrow>
                   </ArrowDiv>);
-      heartDiv = (<HeartDiv>
-                    <HeartButton><i className="glyphicon glyphicon-heart-empty"></i></HeartButton>
-                  </HeartDiv>);
     } else {
       arrowDiv = <ArrowDiv />;
-      heartDiv = <HeartDiv />;
     };
 
     return (

@@ -2,7 +2,6 @@ import React from 'react';
 import PictureCarousel from './PictureCarousel.jsx';
 import TitleInfo from './TitleInfo.jsx';
 import styled from 'styled-components';
-import Arrow from './Arrow.jsx';
 
 const HomesDisplay = styled.div({
   maxHeight: '100%',
@@ -38,7 +37,7 @@ const LeftArrow = styled.div({
 })
 
 const RightArrow = styled(LeftArrow)`
-  padding-left: 1%
+  padding-left: 0.5%
 `;
 
 const HomeContainer = styled.div`
@@ -48,6 +47,11 @@ display: flex;
 transform: translateX(-${props => props.translate}px);
 transition: ease-out 0.75s;
 `
+
+const Image = styled.img`
+  height: 25px;
+  width: 25px;
+`;
 
 class HomeCarousel extends React.Component {
   constructor(props) {
@@ -102,11 +106,9 @@ class HomeCarousel extends React.Component {
   }
 
   render() {
-
-
     return(
       <Container>
-        <LeftArrow onClick={this.previousHome}><img src="https://img.icons8.com/android/24/000000/back.png"/></LeftArrow>
+        <LeftArrow onClick={this.previousHome}><Image src="https://img.icons8.com/android/24/000000/back.png"/></LeftArrow>
         <HomesDisplay>
           <HomeContainer translate={this.state.translate}>
             {this.props.homes.map(home => {
@@ -118,7 +120,7 @@ class HomeCarousel extends React.Component {
             })}
           </HomeContainer>
         </HomesDisplay>
-        <RightArrow onClick={this.nextHome}><img src="https://img.icons8.com/android/24/000000/forward.png"/></RightArrow>
+        <RightArrow onClick={this.nextHome}><Image src="https://img.icons8.com/android/24/000000/forward.png"/></RightArrow>
       </Container>
     )
   }
