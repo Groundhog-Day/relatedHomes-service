@@ -42,6 +42,35 @@ const Image = styled.img`
   width: 100%;
 `;
 
+const ArrowDiv = styled.div({
+  display: 'flex',
+  height: '100%',
+  width: '100%',
+  justifyContent: 'space-between',
+});
+
+const HeartDiv = styled.div({
+  display: 'flex',
+  height: '30px',
+  width: '30px',
+  bottom: '95%',
+  left: '89%',
+  position: 'relative',
+  justifyContent: 'center',
+  backgroundColor: 'white',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  fontSize: '20px'
+});
+
+const ImageContainer = styled.div`
+  transform: translateX(-${props => props.translate}px);
+  transition: 1s;
+  height: 100%;
+  width: 100%;
+  display: flex;
+`
+
 class PictureCarousel extends React.Component {
   constructor(props) {
     super(props)
@@ -105,35 +134,6 @@ class PictureCarousel extends React.Component {
 
   render () {
 
-    const ArrowDiv = styled.div({
-      display: 'flex',
-      height: '100%',
-      width: '100%',
-      justifyContent: 'space-between',
-    });
-
-    const HeartDiv = styled.div({
-      display: 'flex',
-      height: '30px',
-      width: '30px',
-      bottom: '95%',
-      left: '89%',
-      position: 'relative',
-      justifyContent: 'center',
-      backgroundColor: 'white',
-      borderRadius: '50%',
-      cursor: 'pointer',
-      fontSize: '20px'
-    });
-
-    const ImageContainer = styled.div({
-      transform: `translateX(-${this.state.translate}px)`,
-      transition: 'transform 3s',
-      height: '100%',
-      width: '100%',
-      display: 'flex',
-    })
-
     let arrowDiv;
     let heartDiv;
 
@@ -153,7 +153,7 @@ class PictureCarousel extends React.Component {
 
     return (
         <Pictures onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <ImageContainer>
+          <ImageContainer translate={this.state.translate}>
             {this.state.images.map(image => {
                 return (
                 <Image

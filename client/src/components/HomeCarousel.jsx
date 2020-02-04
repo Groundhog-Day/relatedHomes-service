@@ -4,7 +4,15 @@ import TitleInfo from './TitleInfo.jsx';
 import styled from 'styled-components';
 import Arrow from './Arrow.jsx';
 
-
+const HomesDisplay = styled.div({
+  maxHeight: '100%',
+  maxWidth: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  postion: 'relative',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap'
+})
 
 const HomeCard = styled.div({
   height: '370px',
@@ -33,6 +41,13 @@ const RightArrow = styled(LeftArrow)`
   padding-left: 1%
 `;
 
+const HomeContainer = styled.div`
+height: 100%;
+width: 100%;
+display: flex;
+transform: translateX(-${props => props.translate}px);
+transition: 1s;
+`
 
 class HomeCarousel extends React.Component {
   constructor(props) {
@@ -87,28 +102,13 @@ class HomeCarousel extends React.Component {
   }
 
   render() {
-    const HomesDisplay = styled.div({
-      maxHeight: '100%',
-      maxWidth: '100%',
-      display: 'flex',
-      flexDirection: 'row',
-      postion: 'relative',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap'
-    })
 
-    const HomeContainer = styled.div({
-      height: '100%',
-      width: '100%',
-      display: 'flex',
-      transform: `translateX(-${this.state.translate}px)`,
-    })
 
     return(
       <Container>
         <LeftArrow onClick={this.previousHome}><img src="https://img.icons8.com/android/24/000000/back.png"/></LeftArrow>
         <HomesDisplay>
-          <HomeContainer>
+          <HomeContainer translate={this.state.translate}>
             {this.props.homes.map(home => {
               return (
                 <HomeCard key={home.listingId}>

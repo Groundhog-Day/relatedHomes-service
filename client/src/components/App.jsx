@@ -8,7 +8,7 @@ import Arrow from './Arrow.jsx';
 const Title = styled.h2`
   font-size: 25px;
   color: ${props => props.theme.dimGrey};
-  margin-left: 10px;
+  margin-left: 3%;
 `;
 
 const AppContainer = styled.div({

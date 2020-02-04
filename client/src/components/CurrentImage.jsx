@@ -22,7 +22,7 @@ class CurrentImage extends React.Component {
   render() {
 
     const ImageContainer = styled.div({
-      transform: `translateX(-${this.props.translate}px)`,
+      transform: `translateX(-${props => props.translate}px)`,
       transition: 'transform ease-out 1s',
       height: '100%',
       width: '100%',
@@ -35,7 +35,7 @@ class CurrentImage extends React.Component {
     `;
 
     return (
-      <ImageContainer>
+      <ImageContainer translate={this.state.translate}>
         {this.props.images.map(image => {
             return (
             <Image
