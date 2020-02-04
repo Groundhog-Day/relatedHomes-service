@@ -41,7 +41,7 @@ const homes = [{
 },
 {
   "images": [
-      "https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/95.jpg",
+      "https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/995.jpg",
       "https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/45.jpg",
       "https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/33.jpg",
       "https://relatedhomes.s3-us-west-1.amazonaws.com/homeimages/43.jpg",
