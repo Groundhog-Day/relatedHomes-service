@@ -6,6 +6,15 @@ const db = require('../database/index.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+app.get('/getHomes', (req, res) => {
+  db.getThreeHomes((err, list) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(list);
+  })
+})
+
 app.get('/api/related-homes/:listingId', (req, res) => {
   let home = req.params.listingId;
   db.getHome((err, home) => {

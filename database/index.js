@@ -45,7 +45,7 @@ const getRandomPictures = () => {
   const pics = pictures.pictures;
   const result = [];
 
-  let numOfPics = getRandomInt(1, 11);
+  let numOfPics = getRandomInt(5, 11);
 
   for (var i = 0; i < numOfPics; i++) {
     let randomPic = getRandomInt(0, 104);
@@ -58,6 +58,14 @@ const getRandomPictures = () => {
   return result;
 }
 
+const getRandomStarCount = () => {
+  let randomNum = Math.floor(Math.random() * (6 * 100 - 1 * 100) + 1 * 100) / (1 * 100);
+  if (randomNum > 5) {
+    return 5;
+  }
+  return randomNum;
+}
+
 // Function to seed data into database
 const seedData = () => {
   for (let i = 0; i < 100; i++) {
@@ -67,7 +75,7 @@ const seedData = () => {
       homeCategory: getRandomCategory(),
       bedCount: getRandomInt(1, 11),
       listingTitle: faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!'),
-      starCount: getRandomInt(1, 6),
+      starCount: getRandomStarCount(),
       reviewCount: getRandomInt(0, 301),
       pricePerNight: (getRandomInt(40, 301)),
     });
@@ -113,6 +121,17 @@ const getHome = (callback, home) => {
   });
 }
 
+const getThreeHomes = (callback) => {
+  let random = getRandomInt(0,101);
+  Home.find({}, null, {limit: 6, skip: random}, (err, list) => {
+    if(err) {
+      callback(err);
+    }
+    callback(null, list);
+  })
+}
+
 module.exports = {
    getHome,
+   getThreeHomes
 };
