@@ -133,5 +133,6 @@ const getThreeHomes = (callback) => {
 
 module.exports = {
    getHome,
-   getThreeHomes
+   getThreeHomes,
+   seedData
 };
