@@ -6,6 +6,8 @@ const db = require('../database/index.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+//Verified with Postman
+
 app.get('/getHomes', (req, res) => {
   db.getThreeHomes((err, list) => {
     if (err) {
@@ -14,6 +16,7 @@ app.get('/getHomes', (req, res) => {
     res.send(list);
   })
 })
+// Verified with Postman uses listingId
 
 app.get('/api/related-homes/:listingId', (req, res) => {
   let home = req.params.listingId;

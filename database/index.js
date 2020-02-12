@@ -4,6 +4,7 @@ const faker = require('faker');
 const fs = require('fs');
 const request = require('request');
 const pictures = require('./homePictures.js');
+const saveHome = require('./save.js')
 
 mongoose.connect('mongodb://localhost/airbnb', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -69,24 +70,19 @@ const getRandomStarCount = () => {
 // Function to seed data into database
 const seedData = () => {
   for (let i = 0; i < 100; i++) {
-    const newHome = new Home({
-      listingId: i,
-      images: getRandomPictures(),
-      homeCategory: getRandomCategory(),
-      bedCount: getRandomInt(1, 11),
-      listingTitle: faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!'),
-      starCount: getRandomStarCount(),
-      reviewCount: getRandomInt(0, 301),
-      pricePerNight: (getRandomInt(40, 301)),
-    });
+      const id = i;
+      const images = getRandomPictures();
+      const category = getRandomCategory();
+      const beds = getRandomInt(1, 11);
+      const title = faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!');
+      const stars = getRandomStarCount();
+      const reviews = getRandomInt(0, 301);
+      const price = getRandomInt(40, 301);
 
-    newHome.save((err) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log('Saved!');
-    });
+      saveHome(id, images, category, beds, title, stars, reviews, price)
   }
+
+  
 };
 
 // Function to download 100 images
@@ -134,5 +130,6 @@ const getThreeHomes = (callback) => {
 module.exports = {
    getHome,
    getThreeHomes,
-   seedData
+   seedData,
+   Home,
 };
