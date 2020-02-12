@@ -1,7 +1,8 @@
 const db = require('./index.js');
 const mongoose = require('mongoose');
 
-
+//function takes inputs need for a schema and saves an entry based
+// on schema in index.js
 const saveHome = (
   listingId, 
   images, 
@@ -11,7 +12,7 @@ const saveHome = (
   starCount,
   reviewCount,
   pricePerNight ) => {
-
+  // Set up Schema
   const Home = mongoose.model('Home', db.RelatedSchema);
   const newHome = new Home({
     'listingId': listingId, 
@@ -23,7 +24,7 @@ const saveHome = (
     'reviewCount': reviewCount,
     'pricePerNight': pricePerNight
   })
-  
+  // Save entry
   newHome.save((err) => {
     if (err) {
       console.log(err);
@@ -31,11 +32,5 @@ const saveHome = (
     console.log('Saved!');
   })
 }
-
-// Get largest index
-
-// Increment Item Id 
-
-// Save to Schema
 
 module.exports = saveHome; 
