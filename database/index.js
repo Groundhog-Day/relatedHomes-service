@@ -6,6 +6,7 @@ const request = require('request');
 const pictures = require('./homePictures.js');
 const saveHome = require('./save.js')
 
+
 mongoose.connect('mongodb://localhost/airbnb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -26,6 +27,13 @@ const RelatedSchema = new mongoose.Schema({
 });
 
 const Home = mongoose.model('Home', RelatedSchema);
+
+const getMax = (callback) => Home.find((err, home)=> {
+  if (err) callback(err, null);
+  else callback(null, home[0].listingId)}).sort({listingId: -1}).limit(1);
+
+
+getMax((err, home) => console.log(err, home));
 
 // Helper function for getting a random home type
 const getRandomCategory = () => {
@@ -70,43 +78,44 @@ const getRandomStarCount = () => {
 // Function to seed data into database
 const seedData = () => {
   for (let i = 0; i < 100; i++) {
-      const id = i;
-      const images = getRandomPictures();
-      const category = getRandomCategory();
-      const beds = getRandomInt(1, 11);
-      const title = faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!');
-      const stars = getRandomStarCount();
-      const reviews = getRandomInt(0, 301);
-      const price = getRandomInt(40, 301);
-
-      saveHome(id, images, category, beds, title, stars, reviews, price)
+      const home = {
+        listingId: i,
+        images: getRandomPictures(),
+        homeCategory: getRandomCategory(),
+        bedCount: getRandomInt(1, 11),
+        listingTitle: faker.fake('{{commerce.productAdjective}} {{company.catchPhraseDescriptor}} Home!'),
+        starCount: getRandomStarCount(),
+        reviewCount: getRandomInt(0, 301),
+        pricePerNight: getRandomInt(40, 301),
+      }
+      saveHome(home);
   }
 
   
 };
 
 // Function to download 100 images
-const downloadImages = () => {
-  for (let i = 1; i < 101; i++) {
-    request(
-      {
-        method: 'GET',
-        uri: 'https://loremflickr.com/720/400/house',
-        encoding: null,
-      },
-      (error, response, body) => {
-        if (error) {
-          console.log(error);
-        }
-        fs.writeFile(`./images/${i}.jpg`, body, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
-      },
-    );
-  }
-};
+// const downloadImages = () => {
+//   for (let i = 1; i < 101; i++) {
+//     request(
+//       {
+//         method: 'GET',
+//         uri: 'https://loremflickr.com/720/400/house',
+//         encoding: null,
+//       },
+//       (error, response, body) => {
+//         if (error) {
+//           console.log(error);
+//         }
+//         fs.writeFile(`./images/${i}.jpg`, body, (err) => {
+//           if (err) {
+//             console.log(err);
+//           }
+//         });
+//       },
+//     );
+//   }
+// };
 
 const getHome = (callback, home) => {
   Home.findOne({listingId : home}, (err, doc) => {
@@ -127,9 +136,12 @@ const getThreeHomes = (callback) => {
   })
 }
 
+
+
 module.exports = {
    getHome,
    getThreeHomes,
    seedData,
    Home,
+   getMax
 };
