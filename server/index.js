@@ -3,9 +3,12 @@ const app = express();
 const port = 4321;
 const path = require('path');
 const db = require('../database/index.js');
-const saveHome = require('../database/save.js');
-const conform = require('./helperFunctions/dataConform.js');
 
+
+const getRouter = require('./routes/read.js');
+const deleteRouter = require('./routes/delete.js');
+const postRouter = require('./routes/create.js');
+const patchRouter = require('./routes/update.js');
 // Middleware
 
 app.use(express.json());
@@ -13,7 +16,10 @@ app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
+app.use('/', getRouter);
+app.use('/delete/', deleteRouter);
+app.use('/add/', postRouter);
+app.use('/update/', patchRouter);
 //Verified with Postman
 
 app.get('/getHomes', (req, res) => {
