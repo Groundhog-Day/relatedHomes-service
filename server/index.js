@@ -18,8 +18,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/', getRouter);
 app.use('/delete/', deleteRouter);
-app.use('/add/', postRouter);
-app.use('/update/', patchRouter);
+app.use('/post/', postRouter);
+app.use('/patch/', patchRouter);
 //Verified with Postman
 
 app.get('/getHomes', (req, res) => {

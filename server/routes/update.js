@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.patch('/:listingId', (req, res) => {
+router.patch('home/:listingId', (req, res) => {
   const id = req.params.listingId;
   res.send(`${id} updated`)
 })

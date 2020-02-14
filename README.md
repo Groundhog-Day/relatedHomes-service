@@ -5,37 +5,91 @@ Related Home Information Component
 Routes for information are as follows
 
 # CREATE
-Route: '/add/home/' will add a home, required inputs on the home object are category, bedCount, listingTitle, pricePerNight, initializes other values. Those fields must be sent over in the requests. If it does not conform the response is 'bad data' otherwise, it is saved and the Id is returned. 
+Use POST method. 
 
-Route: '/add/image/' will add an image.  
+Route: '/home' 
+Body: JSON object 
+  { category (string), 
+    bedCount (0 - 16), 
+    listingTitle (string), 
+    pricePerNight (int), 
+    address1 (string), 
+    address2 (string), 
+    city (string), 
+    state (string), 
+    zipCode (string), 
+    imageArray,
+  } 
 
-Route: '/add/similar/' will add a relationship between two homes. 
+All fields required, including an imageArray of length at least 1. Initializes other values. 
+
+Return: listingId of inserted object, null if listing does not conform to requirements
+
+Route: '/image' will add an image.  
+Body: JSON object 
+  { url (string),
+    rank (int),
+  }
+Return: nothing.
 
 # READ 
-Legacy Routes
-Route: '/getHomes' which will return three home listings.  
+Use GET method. 
 
-Route: '/api/related-homes/:listingId' which will return a listing
+Legacy Routes
+Route: '/legacy/getHomes' which will return three home listings.  
+
+Route: 'l/egacy/api/related-homes/:listingId' which will return a listing
 Example: http//localhost:4321/api/related-homes/1 will return listing of id 1.
 
 New Routes
-Route: '/getHome/:listingId' which will also return a listing. 
+Route: '/home/:id'  
 
-Example: http//localhost:4321/getHome/1 will return listing of id 1. 
+Body: None
+Return:   
+  JSON object 
+  { listingId, 
+    BedCount, 
+    Category, 
+    listingTitle, 
+    Stars, 
+    ReviewCount, 
+    Price, 
+    Address, 
+    Images
+  }
+  
+  Similiar Listings: { Top 20 similiar listings, Ids and complete information above} 
+
+
 
 # UPDATE
-Route: '/update/:listingId' will update a home listing. 
+Use PATCH method.
 
-Route: 'update/image/:listingId/:imageId' updates an image/'.
+Route: '/home/:id' will update a home listing. 
+Required Information: Any updated fields on home listing on body. Cannot update listingId. 
+UpdateOptions: 
+  { listingId, 
+    BedCount, 
+    Category, 
+    listingTitle, 
+    Stars, 
+    ReviewCount, 
+    Price, 
+    Address
+  }
 
-Route: 'update/similiar/:listingId/:similarId' updates a similarId.
-
+Route: '/image/:id' updates an image'.
+Required Information: Any updated fields on home listing on body. 
+UpdateOptions: 
+  { Url, 
+    Rank
+  }
 
 # DELETE
+Use Delete method.
 
-Route: '/delete/:listingId' will delete home of listingId. 
-Example: http//localhost:4321/deleteHome/1 will delete home with an id of 1. 
+Route: '/home/:id' will delete home of listingId. 
 
-Route: '/delete/image/:listingId/:imageId' will delete an image attached to a particular listingId. Id and url of the image should be on the body of the requrest. 
+Route: '/image/:id' will delete an image of particular id. 
 
-Route: '/delete/similar/:listingId/:similarId' will delete a similar relationship. 
+
