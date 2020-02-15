@@ -17,9 +17,9 @@ app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/', getRouter);
-app.use('/delete/', deleteRouter);
-app.use('/post/', postRouter);
-app.use('/patch/', patchRouter);
+app.use('/', deleteRouter);
+app.use('/', postRouter);
+app.use('/', patchRouter);
 //Verified with Postman
 
 app.get('/getHomes', (req, res) => {
