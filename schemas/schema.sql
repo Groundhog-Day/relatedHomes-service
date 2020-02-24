@@ -24,9 +24,9 @@ CREATE TABLE images (
   home_id integer 
 );
 
-CREATE TABLE similarScore (
-  homeId integer REFERENCES homes,
-  homeId integer REFERENCES homes, 
-  similarScore float NOT NULL 
-);
+-- CREATE TABLE similarScore (
+--   homeId integer REFERENCES homes,
+--   homeId integer REFERENCES homes, 
+--   similarScore float NOT NULL 
+-- );
 
