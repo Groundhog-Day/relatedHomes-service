@@ -1,0 +1,38 @@
+CREATE TABLE relatedhomes.homes (
+  id bigint PRIMARY KEY,
+  beds smallint,
+  title text,
+  user_id bigint,
+  category text,
+  stars decimal,
+  reviewCount smallint,
+  pricepernight smallint,
+  city text,
+  state text,
+  zip text
+)
+
+CREATE TABLE relatedhomes.images_by_home (
+  id bigint,
+  image_url text,
+  showrank smallint,
+  home_id bigint,
+  PRIMARY KEY ((home_id), id)
+)
+
+CREATE TABLE relatedhomes.homes_images_by_location (
+  id bigint,
+  beds smallint,
+  title text,
+  user_id bigint,
+  category text,
+  stars decimal,
+  reviewCount smallint,
+  pricepernight smallint,
+  city text,
+  state text,
+  zip text,
+  images list<text>,
+  PRIMARY KEY ((zip), stars) 
+) WITH CLUSTERING ORDER BY (stars DESC);
+

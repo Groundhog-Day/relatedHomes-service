@@ -13,3 +13,5 @@ router.patch('/image/:listingId/:imageId', (req, res) => {
 router.patch('/similiar/:listingId/:similarId'), (req, res) => {
   res.send(200);
 }
+
+module.exports = router;
