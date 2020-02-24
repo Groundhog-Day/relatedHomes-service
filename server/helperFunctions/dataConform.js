@@ -9,8 +9,8 @@ const conformData = (obj) => {
     conformedObj.images = [];
   }
 
-  conformedObj.starCount = null;
-  conformedObj.reviewCount = 0;
+  // conformedObj.starCount = null;
+  // conformedObj.reviewCount = 0;
 
   // required
   if(!obj.homeCategory || !obj.bedCount || !obj.listingTitle || !obj.pricePerNight) {

@@ -20,7 +20,7 @@ CREATE TABLE relatedhomes.images_by_home (
   PRIMARY KEY ((home_id), id)
 )
 
-CREATE TABLE relatedhomes.homes_by_location (
+CREATE TABLE relatedhomes.homes_images_by_location (
   id bigint,
   beds smallint,
   title text,
@@ -32,6 +32,7 @@ CREATE TABLE relatedhomes.homes_by_location (
   city text,
   state text,
   zip text,
-  PRIMARY KEY (zip) 
-  WITH CLUSTERING ORDER BY (stars DESC);
-)
+  images list<text>,
+  PRIMARY KEY ((zip), stars) 
+) WITH CLUSTERING ORDER BY (stars DESC);
+

@@ -57,7 +57,7 @@ Use GET method.
 Example: http//localhost:4321/api/related-homes/1 will return listing of id 1.
 
 ## New Routes
-### Route: '/home/:id'  
+### Route: '/home/:id/:state/:zip'  
 
 ##### Body: None
 ##### Return: JSON object 
@@ -71,21 +71,23 @@ Example: http//localhost:4321/api/related-homes/1 will return listing of id 1.
     price, 
     city,
     state,
-    zip, 
+    zip,
+    state,
+    city,
     images
   }
   
-  Similiar Listings: { Top 20 similiar listings, Ids and complete information above} 
+  Similiar Listings: { Top 12 similiar listings, Ids and complete information above} 
 
 # UPDATE
 Use PATCH method.
 
 ### Route: 
-'/home/:id' will update a home listing. 
+'/home/:id/:state/:zip' will update a home listing. 
 Required Information: Any updated fields on home listing on body. Cannot update listingId. Requieres userId to match one on file.
 
 ##### Body: 
-{ user_id}
+{ user_id }
 ##### UpdateOptions: 
   { home_id, 
     BedCount, 
@@ -94,7 +96,9 @@ Required Information: Any updated fields on home listing on body. Cannot update 
     Stars, 
     ReviewCount, 
     Price, 
-    Address
+    Zip,
+    State,
+    City,
   }
 
 ### Route: '/image/:id' updates an image'.
@@ -108,7 +112,12 @@ Use Delete method.
 ### Route: 
 '/home/:id' will delete home of listingId. 
 
+##### Body
+requires a userId to match the query.  
+
 ### Route: 
 '/image/:id' will delete an image of particular id. 
 
+##### Body
+requires a userId to match the query.  
 
