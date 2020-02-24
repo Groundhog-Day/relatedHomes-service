@@ -2,7 +2,7 @@ const { Pool, Client } = require('pg');
 const parseHomes = require('./parseData.js');
 
 const client = new Client({
-    user: 'robertlopez',
+    user: 'postgres',
     host: 'localhost',
     database: 'relatedhomes',
     password: '',
