@@ -52,19 +52,55 @@ module.exports = {
     const queryString = `EXPLAIN ANALYZE Select * from homes WHERE homes.home_id = $1;`
     const queryValues = [homeId];
     return db.query(queryString, queryValues);
+  },
+
+  updateHome: (homeId, userId, updateObj) => {
+    let queryValues = [homeId, userId];
+    // change updateObj to a string
+    let updateListString = '';
+    let first = true;
+    let start = 3; 
+    for (const key in updateObj) {
+      if (first === true) {
+        updateListString += `${key} = $${start}`
+        queryValues.push(updateObj[key]);
+        start += 1;
+        first = false;
+      } else {
+        updateListString += `, ${key} = $${start}`
+        queryValues.push(updateObj[key]);
+        start += 1;
+      }
+    }
+    console.log(updateListString, queryValues)
+    const queryString = `UPDATE homes SET ${updateListString} WHERE homes.home_id = $1 and homes.user_id = $2`;
+    return db.query(queryString, queryValues)
   }
 
 }
 // const homeObj = {
 //   beds: 1,
 //   title: 'insertionTest',
-//   user_id: 100, 
 //   category: 'Entire Place',
 //   pricepernight: 100,
 //   city: 'San Francisco',
 //   state: 'CA',
 //   zip: '94110'
 // }
+
+const updateHomeObj = {
+  beds: 10,
+  title: 'updateTest',
+  user_id: 100, 
+  category: 'Entire Place',
+  pricepernight: 100,
+  city: 'San Francisco',
+  state: 'CA',
+  zip: '94110'
+}
+module.exports.updateHome(10000002, 54313, updateHomeObj)
+  .then((res)=> {console.log(res)})
+  .catch(()=>{'stop messing up'})
 
 // module.exports.insertHome(homeObj)
 //   .then((data)=>console.log(data))
