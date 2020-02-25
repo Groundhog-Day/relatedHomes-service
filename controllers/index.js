@@ -88,19 +88,19 @@ module.exports = {
 //   zip: '94110'
 // }
 
-const updateHomeObj = {
-  beds: 10,
-  title: 'updateTest',
-  user_id: 100, 
-  category: 'Entire Place',
-  pricepernight: 100,
-  city: 'San Francisco',
-  state: 'CA',
-  zip: '94110'
-}
-module.exports.updateHome(10000002, 54313, updateHomeObj)
-  .then((res)=> {console.log(res)})
-  .catch(()=>{'stop messing up'})
+// const updateHomeObj = {
+//   beds: 10,
+//   title: 'updateTest',
+//   user_id: 100, 
+//   category: 'Entire Place',
+//   pricepernight: 100,
+//   city: 'San Francisco',
+//   state: 'CA',
+//   zip: '94110'
+// }
+// module.exports.updateHome(10000002, 54313, updateHomeObj)
+//   .then((res)=> {console.log(res)})
+//   .catch(()=>{'stop messing up'})
 
 // module.exports.insertHome(homeObj)
 //   .then((data)=>console.log(data))
