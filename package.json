@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "seed": "node ",
-    "start": "nodemon ./server/index.js",
+    "start": "pm2 start ./server/index.js -i max",
+    "stop": "pm2 stop ./server/index.js",
+    "node-start": "node ./server/index.js -i max",
     "react-dev": "webpack -w"
   },
   "repository": {
@@ -29,12 +31,10 @@
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
     "newrelic": "^6.4.1",
-    "nodemon": "^1.19.2",
     "pg": "^7.18.2",
     "pm2": "^4.2.3",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "request": "^2.88.0",
     "serialize-javascript": ">=2.1.1",
     "styled-components": "^5.0.0",
     "zipcodes": "^8.0.0"

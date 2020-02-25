@@ -61,12 +61,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-
-SELECT homes.home_id, homes.beds, homes.title, homes.category, homes.stars, homes.reviewcount, homes.pricepernight, images.image_url, images.showrank
-    FROM homes INNER JOIN images ON homes.home_id = images.home_id 
-    WHERE homes.home_id IN
-      (SELECT homes.home_id FROM homes WHERE homes.state = 'MN' AND homes.zip = '56237' AND homes.home_id != 787
-       ORDER BY homes.stars DESC LIMIT 12
-      )
