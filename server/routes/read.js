@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../../controllers')
 var parseSimilar = require('../../pg-database/parseData.js');
+const db = require('../../database')
 
 //Legacy route
 router.get('/', (req, res) => {

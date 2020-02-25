@@ -35,13 +35,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/getHomes')
-      .then((response) => {
-        this.setState({homes: response.data})
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    // axios.get('/getHomes')
+    //   .then((response) => {
+    //     this.setState({homes: response.data})
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
   }
 
   render() {
