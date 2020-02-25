@@ -117,31 +117,31 @@
 //   }
 // };
 
-const getHome = (callback, home) => {
-  Home.findOne({listingId : home}, (err, doc) => {
-    if (err) {
-      callback(err);
-    }
-    callback(null, doc);
-  });
-}
+// const getHome = (callback, home) => {
+//   Home.findOne({listingId : home}, (err, doc) => {
+//     if (err) {
+//       callback(err);
+//     }
+//     callback(null, doc);
+//   });
+// }
 
-const getThreeHomes = (callback) => {
-  let random = getRandomInt(0,101);
-  Home.find({}, null, {limit: 6, skip: random}, (err, list) => {
-    if(err) {
-      callback(err);
-    }
-    callback(null, list);
-  })
-}
+// const getThreeHomes = (callback) => {
+//   let random = getRandomInt(0,101);
+//   Home.find({}, null, {limit: 6, skip: random}, (err, list) => {
+//     if(err) {
+//       callback(err);
+//     }
+//     callback(null, list);
+//   })
+// }
 
 
 
-module.exports = {
-   getHome,
-   getThreeHomes,
-   seedData,
-   Home,
-   getMax
-};
+// module.exports = {
+//    getHome,
+//    getThreeHomes,
+//    seedData,
+//    Home,
+//    getMax
+// };
