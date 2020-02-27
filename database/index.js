@@ -92,7 +92,7 @@
 //   }
 
   
-};
+// };
 
 // Function to download 100 images
 // const downloadImages = () => {

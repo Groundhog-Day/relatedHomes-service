@@ -9,7 +9,7 @@ const conform = require('../helperFunctions/dataConform.js');
 
 router.post('/home/', (req, res) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   controller.insertHome(data)
     .then(()=> {
       res.send('Inserted')
