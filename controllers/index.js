@@ -72,7 +72,7 @@ module.exports = {
         start += 1;
       }
     }
-    console.log(updateListString, queryValues)
+    // console.log(updateListString, queryValues)
     const queryString = `UPDATE homes SET ${updateListString} WHERE homes.home_id = $1 and homes.user_id = $2`;
     return db.query(queryString, queryValues)
   }
@@ -106,7 +106,8 @@ module.exports = {
 //   .then((data)=>console.log(data))
 //   .catch((err)=> console.log(err, 'Error'));
 
-// module.exports.getSimilarHomes(1,'OH','43661')
+module.exports.getSimilarHomes(15,'TX','77063')
+  .then((result)=>console.log(result))
 
 
 
