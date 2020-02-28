@@ -6,12 +6,12 @@ const db = require('../../database')
 
 //Legacy route
 router.get('/', (req, res) => {
-  db.getThreeHomes((err, list) => {
-    if (err) {
-      res.send(err);
-    }
-    res.send(list);
-  });
+  // db.getThreeHomes((err, list) => {
+  //   if (err) {
+  //     res.send(err);
+  //   }
+  //   res.send(list);
+  // });
 });
 
 //Legacy route
@@ -35,7 +35,7 @@ router.get('/home/:id/:state/:zip', (req, res) => {
   // console.log(id,state, zip)
   controller.getSimilarHomes(id, state, zip)
     .then((data)=> {
-      res.send(parseSimilar(data.rows))
+      res.send(parseSimilar(data))
     })
     .catch((err)=> {
       console.log(err)
@@ -48,13 +48,14 @@ router.get('/home/:id', (req, res) => {
   let id = req.params.id;
   controller.getHome(id)
     .then((data)=> {
-      res.send(data.rows)
+      res.send(data)
     })
     .catch((err)=> {
       console.log(err)
       res.send('error')
     })
 })
+
 
 
 module.exports = router;
