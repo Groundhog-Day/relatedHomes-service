@@ -38,7 +38,7 @@ router.get('/home/:id/:state/:zip', (req, res) => {
       res.send(parseSimilar(data))
     })
     .catch((err)=> {
-      console.log(err)
+      // console.log(err)
       res.send('error')
     })
 })
@@ -51,7 +51,7 @@ router.get('/home/:id', (req, res) => {
       res.send(data)
     })
     .catch((err)=> {
-      console.log(err)
+      // console.log(err)
       res.send('error')
     })
 })

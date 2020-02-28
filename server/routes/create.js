@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const controller = require('../../controllers')
-const db = require('../../database/index.js');
-const saveHome = require('../../database/save.js');
-const conform = require('../helperFunctions/dataConform.js');
+
 
 
 router.post('/home/', (req, res) => {
