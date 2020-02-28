@@ -40,9 +40,6 @@ const queryNonPromise = (queryString, values, callback) => {
 }
 
 // ends connection for after promise is fulfilled
-const closeConnection = () => {
-  client.end()
-}
 
 // client.query(`SELECT homes.beds, homes.title, homes.category, homes.stars, homes.reviewcount, homes.pricepernight, images.image_url, images.showrank
 // FROM homes INNER JOIN images ON homes.home_id = images.home_id 
@@ -62,9 +59,9 @@ const closeConnection = () => {
 //    ORDER BY homes.stars DESC LIMIT 12
 //   )`
 
-const simpleTest = 'SELECT * from homes WHERE homes.home_id = 1';
-query(simpleTest)
-  .then(result=>{console.log(result)})
+// const simpleTest = 'SELECT * from homes WHERE homes.home_id = 1';
+// query(simpleTest)
+//   .then(result=>{console.log(result)})
 
 
 module.exports.query = query;

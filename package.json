@@ -8,7 +8,7 @@
     "seed": "node ",
     "start": "pm2 start ./server/index.js -i max",
     "stop": "pm2 stop ./server/index.js",
-    "node-start": "node ./server/index.js -i max",
+    "node-start": "node ./server/index.js",
     "react-dev": "webpack -w"
   },
   "repository": {
