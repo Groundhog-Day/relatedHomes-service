@@ -106,8 +106,8 @@ module.exports = {
 //   .then((data)=>console.log(data))
 //   .catch((err)=> console.log(err, 'Error'));
 
-module.exports.getSimilarHomes(15,'TX','77063')
-  .then((result)=>console.log(result))
+// module.exports.getSimilarHomes(15,'TX','77063')
+//   .then((result)=>console.log(result))
 
 
 
