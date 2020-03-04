@@ -1,5 +1,7 @@
 const nr = require('newrelic');
 const express = require('express');
+const compression = require('compression');
+
 const app = express();
 const port = 4321;
 const path = require('path');
@@ -12,6 +14,7 @@ const postRouter = require('./routes/create.js');
 // const patchRouter = require('./routes/update.js');
 // Middleware
 
+app.use(compression())
 app.use(express.json());
 app.use(express.urlencoded());
 
