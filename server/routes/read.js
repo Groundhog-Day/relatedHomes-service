@@ -35,7 +35,7 @@ router.get('/home/:id/:state/:zip', (req, res) => {
   // console.log(id,state, zip)
   controller.getSimilarHomes(id, state, zip)
     .then((data)=> {
-      res.send(parseSimilar(data))
+      res.send(JSON.stringify(parseSimilar(data)))
     })
     .catch((err)=> {
       // console.log(err)
